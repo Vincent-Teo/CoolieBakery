@@ -6,7 +6,7 @@ session_start();
 require_once 'includes/common.php';
 
 // Retrieve all orders with product and user information
-$query = "SELECT o.order_id, o.order_date, o.quantity, p.id, p.name, u.user_id, u.first_name
+$query = "SELECT o.order_id, o.order_date, o.quantity, p.id, p.name, u.user_id, u.first_name, u.phone, u.address
           FROM orders o
           INNER JOIN products p ON o.id = p.id
           INNER JOIN users u ON o.user_id= u.user_id
@@ -35,6 +35,8 @@ $result = mysqli_query($con, $query);
             <th>User Name</th>
             <th>Product Name</th>
             <th>Order Quantity</th>
+            <th>Phone Number</th>
+            <th>Address</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -48,6 +50,8 @@ $result = mysqli_query($con, $query);
             echo '<td>' . $row['first_name'] . '</td>';
             echo '<td>' . $row['name'] . '</td>';
             echo '<td>' . $row['quantity'] . '</td>';
+            echo '<td>' . $row['phone'] . '</td>';
+            echo '<td>' . $row['address'] . '</td>';
 
             // Add Edit and Delete buttons with appropriate links or actions
             echo '<td>';
