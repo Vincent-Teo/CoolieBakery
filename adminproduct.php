@@ -45,7 +45,7 @@ mysqli_close($con);
                 <td>
                     <?php if ($row['image']) {
                         $uniqueID = $row['image'];
-                        $imagePath = 'img/' . $uniqueID;
+                        $imagePath = 'image/' . $uniqueID;
                         if (file_exists($imagePath)) { ?>
                             <img src="<?php echo $imagePath; ?>" alt="Product Image" width="100">
                         <?php } else { ?>
