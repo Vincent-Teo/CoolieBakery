@@ -26,7 +26,7 @@ $totalSalesData = mysqli_fetch_assoc($totalSalesResult);
 $totalProfit = $totalSalesData['total_profit'];
 
 // Retrieve the total number of orders that is not delivered
-$totalOrdersNewQuery = "SELECT COUNT(*) AS total_orders_new FROM `orders`";
+$totalOrdersNewQuery = "SELECT COUNT(*) AS total_orders_new FROM `orders` WHERE status = 'Confirm'";
 $totalOrdersNewResult = mysqli_query($con, $totalOrdersNewQuery);
 $totalOrdersNew = mysqli_fetch_assoc($totalOrdersNewResult)['total_orders_new'];
 
@@ -41,46 +41,52 @@ mysqli_close($con);
     <title>Admin Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional CSS styles */
+        .custom-card {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
 <?php include 'admin_navbar.php'; ?>
 <div class="container">
     <h1>Admin Dashboard</h1>
     <div class="row">
-        <div class="col">
-            <div class="card">
+        <div class="col-md-4">
+            <div class="card custom-card">
                 <div class="card-body">
                     <h5 class="card-title">Total Users</h5>
                     <p class="card-text"><?php echo $totalUsers; ?></p>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
+        <div class="col-md-4">
+            <div class="card custom-card">
                 <div class="card-body">
                     <h5 class="card-title">Total Products</h5>
                     <p class="card-text"><?php echo $totalProducts; ?></p>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
+        <div class="col-md-4">
+            <div class="card custom-card">
                 <div class="card-body">
                     <h5 class="card-title">Total Orders(New)</h5>
                     <p class="card-text"><?php echo $totalOrdersNew; ?></p>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
+        <div class="col-md-4">
+            <div class="card custom-card">
                 <div class="card-body">
                     <h5 class="card-title">Total Orders(Delivered)</h5>
                     <p class="card-text"><?php echo $totalOrders; ?></p>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card">
+        <div class="col-md-4">
+            <div class="card custom-card">
                 <div class="card-body">
                     <h5 class="card-title">Total Profit</h5>
                     <p class="card-text"><?php echo 'RM ' . $totalProfit; ?></p>
