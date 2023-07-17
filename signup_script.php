@@ -38,7 +38,7 @@ if ($num != 0) {
     header('location: index.php?error=' . $m);
     exit();
 } else {
-    $quer = "INSERT INTO users(email_id, first_name, last_name, password, phone, address, level) VALUES ('$email', '$first', '$last', '$hashedPassword', '$phoneNumber', '$address', '1')";
+    $quer = "INSERT INTO users(email_id, first_name, last_name, password, phone, address, level) VALUES ('$email', '$first', '$last', '$hashedPassword', '$phoneNumber', '$address', '0')";
     mysqli_query($con, $quer);
 
     $user_id = mysqli_insert_id($con);

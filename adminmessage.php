@@ -32,6 +32,7 @@ mysqli_close($con);
             <th>Name</th>
             <th>Phone Number</th>
             <th>Message</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -42,6 +43,12 @@ mysqli_close($con);
                 <td><?php echo $messageData['name']; ?></td>
                 <td><?php echo $messageData['phonenum']; ?></td>
                 <td><?php echo $messageData['message']; ?></td>
+                <td>
+                    <form action="delete_message.php" method="post">
+                        <input type="hidden" name="contact_id" value="<?php echo $messageData['contact_id']; ?>">
+                        <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
         <?php endwhile; ?>
         </tbody>
@@ -49,6 +56,5 @@ mysqli_close($con);
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>

@@ -72,7 +72,7 @@ mysqli_close($con);
         <div class="col-md-4">
             <div class="card custom-card">
                 <div class="card-body">
-                    <h5 class="card-title">Total Orders(New)</h5>
+                    <h5 class="card-title">Total Orders</h5>
                     <p class="card-text"><?php echo $totalOrdersNew; ?></p>
                 </div>
             </div>
