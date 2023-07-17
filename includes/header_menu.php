@@ -21,6 +21,7 @@
         ?>
           <li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
           <li class="nav-item"><a href="userdetails.php" class="nav-link">User</a></li>
+          <li class="nav-item"><a href="custorder.php" class="nav-link">My Orders</a></li>
         <?php
         }
         ?>
