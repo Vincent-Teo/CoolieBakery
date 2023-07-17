@@ -4,7 +4,7 @@ session_start();
 require_once 'includes/common.php';
 
 // Retrieve non-admin users from the database
-$userQuery = "SELECT user_id, first_name, last_name, level FROM users WHERE level != 1";
+$userQuery = "SELECT user_id, CONCAT(first_name, ' ', last_name) AS user_name, level FROM users WHERE level != 1";
 $userResult = mysqli_query($con, $userQuery);
 
 // Handle user deletion
@@ -42,8 +42,7 @@ mysqli_close($con);
             <thead>
                 <tr>
                     <th>User ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>User Name</th>
                     <th>User Level</th>
                     <th>Action</th>
                 </tr>
@@ -52,8 +51,7 @@ mysqli_close($con);
                 <?php while ($row = mysqli_fetch_assoc($userResult)) { ?>
                     <tr>
                         <td><?php echo $row['user_id']; ?></td>
-                        <td><?php echo $row['first_name']; ?></td>
-                        <td><?php echo $row['last_name']; ?></td>
+                        <td><?php echo $row['user_name']; ?></td>
                         <td><?php echo $row['level']; ?></td>
                         <td>
                             <a href="edituser.php?id=<?php echo $row['user_id']; ?>" class="btn btn-primary">Edit</a>

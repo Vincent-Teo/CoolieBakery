@@ -20,6 +20,7 @@
         if (isset($_SESSION['email'])) {
         ?>
           <li class="nav-item"><a href="cart.php" class="nav-link">Cart</a></li>
+          <li class="nav-item"><a href="userdetails.php" class="nav-link">User</a></li>
         <?php
         }
         ?>
@@ -108,7 +109,10 @@
             <label for="pwd">Password:</label>
             <input type="password" class="form-control" id="pwd" name="password" placeholder="Password" required>
           </div>
-
+          <div class="form-group">
+            <label for="confirmPwd">Confirm Password:</label>
+            <input type="password" class="form-control" id="confirmPwd" name="confirmPassword" placeholder="Confirm Password" required>
+          </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="validation1">First Name</label>
@@ -127,13 +131,13 @@
             <label for="add">Address:</label>
             <input type="address" class="form-control" id="add" name="address" placeholder="Address" required>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="level">Level:</label>
             <select class="form-control" id="level" name="level" required>
               <option value="0">Regular User</option>
               <option value="1">Admin User</option>
             </select>
-          </div>
+          </div> -->
           <button type="submit" class="btn btn-primary btn-block" name="Submit">Sign Up</button>
         </form>
       </div>

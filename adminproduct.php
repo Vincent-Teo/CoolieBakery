@@ -25,7 +25,6 @@ mysqli_close($con);
 <?php include 'admin_navbar.php'; ?>
 <div class="container">
     <h1>Admin Product Overview</h1>
-    <a href="add_product.php" class="btn btn-primary mb-3">Upload new Product</a>
     <table class="table">
         <thead>
         <tr>
@@ -45,7 +44,7 @@ mysqli_close($con);
                 <td>
                     <?php if ($row['image']) {
                         $uniqueID = $row['image'];
-                        $imagePath = 'image/' . $uniqueID;
+                        $imagePath = 'images/' . $uniqueID;
                         if (file_exists($imagePath)) { ?>
                             <img src="<?php echo $imagePath; ?>" alt="Product Image" width="100">
                         <?php } else { ?>
@@ -63,6 +62,7 @@ mysqli_close($con);
         <?php } ?>
         </tbody>
     </table>
+    <a href="add_product.php" class="btn btn-primary mb-3">Add new Product</a>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

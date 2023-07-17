@@ -131,7 +131,6 @@ if (!empty($_POST['email'])) {
 <body>
     <?php
     include 'includes/header_menu.php';
-    include 'includes/check-if-added.php';
     ?>
     <div class="container-contact">
         <div class="contact_information">

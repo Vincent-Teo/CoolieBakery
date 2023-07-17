@@ -56,9 +56,6 @@ if (isset($_POST['add_product'])) {
 <?php include 'admin_navbar.php'; ?>
 <div class="container">
     <h1>Add Product</h1>
-    <?php if (!empty($message)) { ?>
-        <div class="alert alert-danger"><?php echo $message; ?></div>
-    <?php } ?>
     <form method="POST" action="" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="product_name" class="form-label">Product Name</label>

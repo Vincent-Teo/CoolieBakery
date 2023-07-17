@@ -10,7 +10,7 @@ $totalOrdersResult = mysqli_query($con, $totalOrdersQuery);
 $totalOrders = mysqli_fetch_assoc($totalOrdersResult)['total_orders'];
 
 // Retrieve the total number of users
-$totalUsersQuery = "SELECT COUNT(*) AS total_users FROM `users`";
+$totalUsersQuery = "SELECT COUNT(*) AS total_users FROM `users` WHERE level = 0";
 $totalUsersResult = mysqli_query($con, $totalUsersQuery);
 $totalUsers = mysqli_fetch_assoc($totalUsersResult)['total_users'];
 

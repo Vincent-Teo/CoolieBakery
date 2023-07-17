@@ -1,35 +1,33 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION['user_id'])) {
-
     header("Location: login.php");
     exit();
 }
 
-
 require_once 'includes/common.php';
-
 
 $userId = $_SESSION['user_id'];
 $cartId = mysqli_insert_id($con);
-
 
 $_SESSION['id'] = $cartId;
 
 if (isset($_POST['submit'])) {
     $phoneNumber = $_POST['phone'];
     $address = $_POST['address'];
-
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $postalCode = $_POST['postalCode'];
+    $country = $_POST['country'];
 
     if (!is_numeric($phoneNumber)) {
         $error = "Phone number should be an integer.";
     } else {
+        $fullAddress = $address . ', ' . $city . ', ' . $state . ', ' . $postalCode . ', ' . $country;
 
-        $updateQuery = "UPDATE users SET phone = '$phoneNumber', address = '$address' WHERE user_id = '$userId'";
+        $updateQuery = "UPDATE users SET phone = '$phoneNumber', address = '$fullAddress' WHERE user_id = '$userId'";
         mysqli_query($con, $updateQuery);
-
 
         header("Location: payment_confirmation.php");
         exit();
@@ -89,11 +87,11 @@ mysqli_close($con);
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputCity" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="inputCity">
+                                    <input type="text" class="form-control" id="inputCity" name="city">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputState" class="form-label">State</label>
-                                    <select id="inputState" class="form-select">
+                                    <select id="inputState" class="form-select" name="state">
                                         <option selected>Choose...</option>
                                         <option value="Johor">Johor</option>
                                         <option value="Kedah">Kedah</option>
@@ -112,11 +110,11 @@ mysqli_close($con);
                                 </div>
                                 <div class="col-md-6">
                                     <label for="postalCode" class="form-label">Postal Code</label>
-                                    <input type="text" class="form-control" id="postalCode">
+                                    <input type="text" class="form-control" id="postalCode" name="postalCode">
                                 </div>
                                 <div class="col-md-6">
                                     <label for="country" class="form-label">Country</label>
-                                    <input type="text" class="form-control" id="country">
+                                    <input type="text" class="form-control" id="country" name="country">
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Payment Method</label>
