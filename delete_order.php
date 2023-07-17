@@ -1,13 +1,6 @@
 <?php
 session_start();
 
-// Check if the user is logged in
-if (!isset($_SESSION['admin'])) {
-    // Redirect to login page
-    header('Location: login.php');
-    exit();
-}
-
 require_once 'includes/common.php';
 
 if (isset($_GET['id'])) {
@@ -16,7 +9,7 @@ if (isset($_GET['id'])) {
     // Retrieve the order details
     $query = "SELECT o.order_id, o.quantity, p.price
               FROM orders o
-              INNER JOIN product p ON o.id = p.id
+              INNER JOIN products p ON o.id = p.id
               WHERE o.ORDER_ID = '$orderId'";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);

@@ -20,7 +20,7 @@ $totalProductsResult = mysqli_query($con, $totalProductsQuery);
 $totalProducts = mysqli_fetch_assoc($totalProductsResult)['total_products'];
 
 // Retrieve the total product sales and profit
-$totalSalesQuery = "SELECT total AS total_profit FROM `sales`";
+$totalSalesQuery = "SELECT SUM(total) AS total_profit FROM `sales`";
 $totalSalesResult = mysqli_query($con, $totalSalesQuery);
 $totalSalesData = mysqli_fetch_assoc($totalSalesResult);
 $totalProfit = $totalSalesData['total_profit'];
