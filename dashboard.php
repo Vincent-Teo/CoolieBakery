@@ -25,6 +25,11 @@ $totalSalesResult = mysqli_query($con, $totalSalesQuery);
 $totalSalesData = mysqli_fetch_assoc($totalSalesResult);
 $totalProfit = $totalSalesData['total_profit'];
 
+// Retrieve the total number of orders that is not delivered
+$totalOrdersNewQuery = "SELECT COUNT(*) AS total_orders_new FROM `orders`";
+$totalOrdersNewResult = mysqli_query($con, $totalOrdersNewQuery);
+$totalOrdersNew = mysqli_fetch_assoc($totalOrdersNewResult)['total_orders_new'];
+
 mysqli_close($con);
 ?>
 
@@ -61,7 +66,15 @@ mysqli_close($con);
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Total Orders</h5>
+                    <h5 class="card-title">Total Orders(New)</h5>
+                    <p class="card-text"><?php echo $totalOrdersNew; ?></p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Orders(Delivered)</h5>
                     <p class="card-text"><?php echo $totalOrders; ?></p>
                 </div>
             </div>

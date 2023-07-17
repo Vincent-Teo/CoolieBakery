@@ -10,8 +10,13 @@ if (isset($_GET['id'])) {
     $query = "SELECT o.order_id, o.quantity, o.status, p.price
               FROM orders o
               INNER JOIN products p ON o.id = p.id
-              WHERE o.ORDER_ID = '$orderId' && o.status ='Confirm'";
-    $result = mysqli_query($con, $query);
+              WHERE o.order_id = ? AND o.status = 'Confirm'";
+
+    // Use prepared statement instead of directly inserting the variable
+    $stmt = mysqli_prepare($con, $query);
+    mysqli_stmt_bind_param($stmt, "s", $orderId);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
     $row = mysqli_fetch_assoc($result);
 
     // Copy order details to sales table
@@ -22,12 +27,16 @@ if (isset($_GET['id'])) {
     $total = $salesQuantity * $salesPrice;
 
     $insertQuery = "INSERT INTO sales (order_id, total)
-                    VALUES ('$orderId', $total)";
-    mysqli_query($con, $insertQuery);
+                    VALUES (?, ?)";
+    $stmt = mysqli_prepare($con, $insertQuery);
+    mysqli_stmt_bind_param($stmt, "sd", $orderId, $total);
+    mysqli_stmt_execute($stmt);
 
     // Delete the order from the database
-    $updateQuery = "UPDATE orders SET status = 'Completed' WHERE order_id = '$orderId'";
-    mysqli_query($con, $updateQuery);
+    $updateQuery = "UPDATE orders SET status = 'Completed' WHERE order_id = ?";
+    $stmt = mysqli_prepare($con, $updateQuery);
+    mysqli_stmt_bind_param($stmt, "s", $orderId);
+    mysqli_stmt_execute($stmt);
 
     // Redirect to the adminorder.php page
     header('Location: adminorder.php');
