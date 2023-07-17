@@ -45,23 +45,30 @@ mysqli_close($con);
 
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Payment Confirmation</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coolie's Bakery - Payment Confirmation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Delius Swash Caps' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Andika' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<?php include 'includes/header_menu.php'; ?>
-<div class="container">
-    <h1>Payment Confirmation</h1>
-    <p>Your payment has been confirmed.</p>
-    <p>Thank you for purchasing!</p>
-    <a href="index.php" class="btn btn-primary">Return to Home</a>
-</div>
-<?php include 'includes/footer.php'; ?>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <?php include 'includes/header_menu.php'; ?>
+    <div class="container">
+        <h1>Payment Confirmation</h1>
+        <p>Your payment has been confirmed.</p>
+        <p>Thank you for purchasing!</p>
+        <a href="index.php" class="btn btn-primary">Return to Home</a>
+    </div>
+    <?php include 'includes/footer.php'; ?>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
