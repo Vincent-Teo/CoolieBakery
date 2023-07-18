@@ -6,9 +6,6 @@ $email = $_POST['eMail'];
 $email = mysqli_real_escape_string($con, $email);
 
 $password = $_POST['password'];
-$password = mysqli_real_escape_string($con, $pass);
-$password = md5($pass);
-
 $confirmPassword = $_POST['confirmPassword'];
 
 // Check if passwords match
@@ -39,7 +36,9 @@ if ($num != 0) {
     header('location: index.php?error=' . $m);
     exit();
 } else {
-    $quer = "INSERT INTO users(email_id, first_name, last_name, password, phone, address, level) VALUES ('$email', '$first', '$last', '$hashedPassword', '$phoneNumber', '$address', '0')";
+    $password = mysqli_real_escape_string($con, $password);
+    $password = md5($password);
+    $quer = "INSERT INTO users(email_id, first_name, last_name, password, phone, address, level) VALUES ('$email', '$first', '$last', '$password', '$phoneNumber', '$address', '0')";
     mysqli_query($con, $quer);
 
     $user_id = mysqli_insert_id($con);
@@ -49,4 +48,3 @@ if ($num != 0) {
     header('location: index.php');
     exit();
 }
-?>
