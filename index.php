@@ -53,7 +53,7 @@ session_start();
                     <div class="carousel-caption d-none d-md-block">
                         <h1 style="color: black;">Having question?</h1>
                         <p style="color: black;">Contact us and we try our best to help you!</p>
-                        <a a href="coctactus.php" class="btn btn-lg btn-primary">Contact Us</a>
+                        <a a href="contactus.php" class="btn btn-lg btn-primary">Contact Us</a>
                     </div>
                 </div>
             </div>
