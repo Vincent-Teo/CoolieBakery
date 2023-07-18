@@ -20,7 +20,9 @@ if (isset($_POST['submit'])) {
 
     // Check if the passwords match
     if ($password === $confirmPassword) {
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        
+        $password = mysqli_real_escape_string($con, $pass);
+        $password= md5($pass);
 
         $updateQuery = "UPDATE users SET email_id = '$email', first_name = '$firstName', last_name = '$lastName', phone = '$phoneNumber', address = '$address', password = '$hashedPassword' WHERE user_id= '$userId'";
         mysqli_query($con, $updateQuery);

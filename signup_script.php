@@ -6,6 +6,9 @@ $email = $_POST['eMail'];
 $email = mysqli_real_escape_string($con, $email);
 
 $password = $_POST['password'];
+$password = mysqli_real_escape_string($con, $pass);
+$password = md5($pass);
+
 $confirmPassword = $_POST['confirmPassword'];
 
 // Check if passwords match
@@ -14,8 +17,6 @@ if ($password !== $confirmPassword) {
     header('location: index.php?error=' . $m);
     exit();
 }
-
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 $first = $_POST['firstName'];
 $first = mysqli_real_escape_string($con, $first);
