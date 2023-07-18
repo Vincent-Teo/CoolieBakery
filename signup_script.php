@@ -32,10 +32,12 @@ $result = mysqli_query($con, $query);
 $num = mysqli_num_rows($result);
 
 if ($num != 0) {
+    //error message for duplicate email
     $m = "Email Already Exists";
     header('location: index.php?error=' . $m);
     exit();
 } else {
+    //insert user data into users table
     $password = mysqli_real_escape_string($con, $password);
     $password = md5($password);
     $quer = "INSERT INTO users(email_id, first_name, last_name, password, phone, address, level) VALUES ('$email', '$first', '$last', '$password', '$phoneNumber', '$address', '0')";

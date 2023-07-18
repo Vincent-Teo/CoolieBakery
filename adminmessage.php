@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Assuming you have a database connection
 require_once 'includes/common.php';
 
 // Retrieve all messages from the database
@@ -36,6 +35,7 @@ mysqli_close($con);
         </tr>
         </thead>
         <tbody>
+            <!-- loop through database and display message -->
         <?php while ($messageData = mysqli_fetch_assoc($messagesResult)): ?>
             <tr>
                 <td><?php echo $messageData['contact_id']; ?></td>

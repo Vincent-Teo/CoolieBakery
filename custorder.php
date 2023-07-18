@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Assuming you have a database connection
 require_once 'includes/common.php';
 
 // Retrieve orders for the current user with product information

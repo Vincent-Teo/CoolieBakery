@@ -35,7 +35,7 @@ session_start();
                 $query = "SELECT * FROM products WHERE name LIKE '%$search%'";
                 $result = mysqli_query($con, $query);
 
-                if (mysqli_num_rows($result) > 0) {
+                if (mysqli_num_rows($result) > 0) {//loop and display products
                     while ($row = mysqli_fetch_assoc($result)) {
                         $productId = $row['id'];
                         $productName = $row['name'];

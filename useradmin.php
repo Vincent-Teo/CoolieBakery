@@ -33,6 +33,7 @@ mysqli_close($con);
         </tr>
         </thead>
         <tbody>
+            <!-- loop and display non admin user -->
         <?php while ($row = mysqli_fetch_assoc($userResult)) { ?>
             <tr>
                 <td><?php echo $row['user_id']; ?></td>

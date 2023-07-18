@@ -31,7 +31,7 @@ while ($row = mysqli_fetch_assoc($cartItemsResult)) {
     $productId = $row['item_id'];
     $orderTime = date("Y-m-d H:i:s");
 
-    // Insert the order item into the order table with the payment type
+    // Insert the order item into the order table
     $insertOrderQuery = "INSERT INTO `orders` (order_date, user_id, id, quantity, status) VALUES ('$orderTime', '$userId', '$productId', '$quantity', 'Confirm')";
     mysqli_query($con, $insertOrderQuery);
 

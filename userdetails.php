@@ -24,6 +24,7 @@ if (isset($_POST['submit'])) {
         $password = mysqli_real_escape_string($con, $password);
         $password= md5($password);
 
+        //update user info in users table
         $updateQuery = "UPDATE users SET email_id = '$email', first_name = '$firstName', last_name = '$lastName', phone = '$phoneNumber', address = '$address', password = '$password' WHERE user_id= '$userId'";
         mysqli_query($con, $updateQuery);
 

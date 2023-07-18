@@ -2,7 +2,6 @@
 
 session_start();
 
-// Assuming you have a database connection
 require_once 'includes/common.php';
 
 // Retrieve all products from the product table
@@ -36,6 +35,7 @@ mysqli_close($con);
         </tr>
         </thead>
         <tbody>
+        <!-- loop through database and display products -->
         <?php while ($row = mysqli_fetch_assoc($productsResult)) { ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>

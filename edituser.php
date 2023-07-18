@@ -10,6 +10,7 @@ if (!isset($_GET['id'])) {
 
 $userId = $_GET['id'];
 
+//fetch data from database
 $userQuery = "SELECT email_id, first_name, last_name, phone, address FROM users WHERE user_id = '$userId'";
 $userResult = mysqli_query($con, $userQuery);
 $userData = mysqli_fetch_assoc($userResult);
@@ -21,6 +22,7 @@ if (isset($_POST['submit'])) {
     $phoneNumber = $_POST['phone'];
     $address = $_POST['address'];
 
+    //update data in database
     $updateQuery = "UPDATE users SET email_id = '$email', first_name = '$firstName', last_name = '$lastName', phone = '$phoneNumber', address = '$address' WHERE user_id= '$userId'";
     mysqli_query($con, $updateQuery);
 

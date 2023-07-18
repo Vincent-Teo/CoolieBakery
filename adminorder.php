@@ -2,7 +2,6 @@
 
 session_start();
 
-// Assuming you have a database connection
 require_once 'includes/common.php';
 
 // Retrieve all orders with product and user information
@@ -53,7 +52,7 @@ $result = mysqli_query($con, $query);
             echo '<td>' . $row['phone'] . '</td>';
             echo '<td>' . $row['address'] . '</td>';
 
-            // Add Edit and Delete buttons with appropriate links or actions
+            //Edit and Delete buttons
             echo '<td>';
             echo '<button onclick="confirmUpdate(' . $row['order_id'] . ')" class="btn btn-success">Order Delivered</button>';
             echo ' ';

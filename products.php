@@ -60,7 +60,7 @@ session_start();
                 $result = mysqli_query($con, $query);
             }
 
-            if (mysqli_num_rows($result) > 0) {
+            if (mysqli_num_rows($result) > 0) {//loop and display all products
                 while ($row = mysqli_fetch_assoc($result)) {
                     $productId = $row['id'];
                     $productName = $row['name'];

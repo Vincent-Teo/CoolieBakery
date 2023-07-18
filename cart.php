@@ -30,6 +30,7 @@ $sum = 0;
 $delivery_fee = 0;
 $grand_total = 0;
 
+//loop through database and fetch neccessary info for counting sum, delivery fee and grand total
 $query = "SELECT products.price AS Price, products.id, products.name AS Name, users_products.quantity AS Quantity FROM users_products JOIN products ON users_products.item_id = products.id WHERE users_products.user_id='$user_id'";
 $result = mysqli_query($con, $query);
 if (mysqli_num_rows($result) >= 1) {
@@ -88,6 +89,7 @@ $_SESSION['grand_total'] = $grand_total;
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- loop through database and fetch data -->
                         <?php
                         while ($row = mysqli_fetch_array($result)) {
                             $quantity = $row["Quantity"];
@@ -118,7 +120,7 @@ $_SESSION['grand_total'] = $grand_total;
                         ?>
                     </tbody>
                 <?php
-                } else {
+                } else {//error message for empty cart
                     echo "<div><img src='images/emptycart.png' class='image-fluid' height='150' width='150'></div><br/>";
                     echo "<div class='text-bold h5'>Add items to the cart first!</div>";
                 }

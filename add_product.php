@@ -18,19 +18,20 @@ if (isset($_POST['add_product'])) {
     $select_products->execute();
     $select_products->store_result();
 
-    if ($select_products->num_rows > 0) {
+    if ($select_products->num_rows > 0) {//alert message on duplicate name for product
         echo "<script src='js/sweetalert.min.js'></script>";
                 echo "<script>setTimeout(function(){ swal({title: 'Duplicate product name', icon: 'warning',timer: 3000}).then(function() {window.location = 'add_product.php';}); }, 1);</script>";
     } else {
-        if ($image_size > 2000000) {
+        if ($image_size > 2000000) {//alert message on file size that is too bog
             echo "<script src='js/sweetalert.min.js'></script>";
             echo "<script>setTimeout(function(){ swal({title: 'Image File too Large', icon: 'success',timer: 3000}).then(function() {window.location = 'add_product.php';}); }, 1);</script>";
-        } else {
+        } else {//Insert Product info to database
             move_uploaded_file($image_tmp_name, $image_folder);
 
             $insert_product = $con->prepare("INSERT INTO `products` (name, price, image) VALUES (?,?,?)");
             $insert_product->bind_param('sss', $productName, $productPrice, $image);
             
+            //display alert message
             if ($insert_product->execute()) {
                 echo "<script src='js/sweetalert.min.js'></script>";
                 echo "<script>setTimeout(function(){ swal({title: ' Successfully added new Product', icon: 'success',timer: 3000}).then(function() {window.location = 'add_product.php';}); }, 1);</script>";
