@@ -30,6 +30,8 @@ mysqli_close($con);
             <th>Product ID</th>
             <th>Product Name</th>
             <th>Product Price</th>
+            <th>Description</th>
+            <th>Portion</th>
             <th>Product Image</th>
             <th>Actions</th>
         </tr>
@@ -41,6 +43,9 @@ mysqli_close($con);
                 <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['name']; ?></td>
                 <td><?php echo'RM ' .$row['price']; ?></td>
+                <td><?php echo $row['description']; ?></td>
+                <td><?php echo $row['portion']; ?></td>
+                <td><?php echo $row['name']; ?></td>
                 <td>
                     <?php if ($row['image']) {
                         $uniqueID = $row['image'];

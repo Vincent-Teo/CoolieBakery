@@ -10,7 +10,7 @@ if (!isset($_GET['id'])) {
 
 $productId = $_GET['id'];
 
-$productQuery = "SELECT name, price FROM products WHERE id = '$productId'";
+$productQuery = "SELECT `name`, `price`, `description`, `portion` FROM `products` WHERE `id` = '$productId'";
 $productResult = mysqli_query($con, $productQuery);
 $productData = mysqli_fetch_assoc($productResult);
 
@@ -18,8 +18,10 @@ $productData = mysqli_fetch_assoc($productResult);
 if (isset($_POST['submit'])) {
     $productName = $_POST['product_name'];
     $productPrice = $_POST['product_price'];
+    $portion = $_POST['portion'];
+    $description = $_POST['description'];
 
-    $updateQuery = "UPDATE products SET name = '$productName', price = '$productPrice' WHERE id = '$productId'";
+    $updateQuery = "UPDATE `products` SET `name` = '$productName', `price` = '$productPrice', `portion` = '$portion', `description` = '$description' WHERE `id` = '$productId'";
     mysqli_query($con, $updateQuery);
     header("Location: adminproduct.php");
     exit();
@@ -51,6 +53,14 @@ mysqli_close($con);
             <div class="mb-3">
                 <label for="product_price" class="form-label">Product Price</label>
                 <input type="number" class="form-control" id="product_price" name="product_price" value="<?php echo $productData['price']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="product_name" class="form-label">Portion</label>
+                <input type="text" class="form-control" id="portion" name="portion" value="<?php echo $productData['portion']; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="product_name" class="form-label">Description</label>
+                <input type="text" class="form-control" id="description" name="description" value="<?php echo $productData['description']; ?>">
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>

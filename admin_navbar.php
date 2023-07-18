@@ -15,6 +15,9 @@
                     <a class="nav-link" href="adminorder.php">Orders</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="admin_order_complete.php">Orders (Delivered)</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="adminproduct.php">Products</a>
                 </li>
 

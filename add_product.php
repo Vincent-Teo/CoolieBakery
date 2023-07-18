@@ -7,6 +7,8 @@ require_once 'includes/common.php';
 if (isset($_POST['add_product'])) {
     $productName = $_POST['product_name'];
     $productPrice = $_POST['product_price'];
+    $description = $_POST['description'];
+    $portion = $_POST['portion'];
 
     $image = $_FILES['product_image']['name'];
     $image_size = $_FILES['product_image']['size'];
@@ -28,8 +30,8 @@ if (isset($_POST['add_product'])) {
         } else {//Insert Product info to database
             move_uploaded_file($image_tmp_name, $image_folder);
 
-            $insert_product = $con->prepare("INSERT INTO `products` (name, price, image) VALUES (?,?,?)");
-            $insert_product->bind_param('sss', $productName, $productPrice, $image);
+            $insert_product = $con->prepare("INSERT INTO `products` (name, price, description, portion, image) VALUES (?,?,?,?,?)");
+            $insert_product->bind_param('sss', $productName, $productPrice, $description, $portion, $image);
             
             //display alert message
             if ($insert_product->execute()) {
@@ -65,6 +67,14 @@ if (isset($_POST['add_product'])) {
         <div class="mb-3">
             <label for="product_price" class="form-label">Product Price</label>
             <input type="number" class="form-control" id="product_price" name="product_price" required>
+        </div>
+        <div class="mb-3">
+            <label for="product_price" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" name="description" required>
+        </div>
+        <div class="mb-3">
+            <label for="product_price" class="form-label">Portion</label>
+            <input type="text" class="form-control" id="portion" name="portion" required>
         </div>
         <div class="mb-3">
             <label for="product_image" class="form-label">Product Image</label>

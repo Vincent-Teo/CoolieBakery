@@ -9,7 +9,7 @@ $query = "SELECT o.order_id, o.order_date, o.quantity, p.id, p.name, u.user_id, 
           FROM orders o
           INNER JOIN products p ON o.id = p.id
           INNER JOIN users u ON o.user_id= u.user_id
-          WHERE o.status = 'Confirm'";
+          WHERE o.status = 'Complete'";
 $result = mysqli_query($con, $query);
 
 ?>
@@ -37,7 +37,6 @@ $result = mysqli_query($con, $query);
             <th>Order Quantity</th>
             <th>Phone Number</th>
             <th>Address</th>
-            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -53,13 +52,6 @@ $result = mysqli_query($con, $query);
             echo '<td>' . $row['phone'] . '</td>';
             echo '<td>' . $row['address'] . '</td>';
 
-            //Edit and Delete buttons
-            echo '<td>';
-            echo '<button onclick="confirmUpdate(' . $row['order_id'] . ')" class="btn btn-success">Order Delivered</button>';
-            echo ' ';
-            echo '<button onclick ="confirmDelete(' . $row['order_id'] . ')" class = "btn btn-danger"> Delete Order</button>';
-            echo '</td>';
-
             echo '</tr>';
         }
         ?>
@@ -69,20 +61,6 @@ $result = mysqli_query($con, $query);
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-    // JavaScript function to display a confirmation dialog before deleting an order
-    function confirmUpdate(order_id) {
-        if (confirm("Are you sure you want to confirm this order?")) {
-            window.location.href = "update_order.php?id=" + order_id;
-        }
-    }
-
-    function confirmDelete(order_id){
-        if(confirm("Are you sure you want to delete this order?")){
-            window.location.href ="delete_order.php?id=" + order_id;
-        }
-    }
-</script>
 </body>
 </html>
 

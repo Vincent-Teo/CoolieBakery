@@ -5,7 +5,7 @@ session_start();
 require_once 'includes/common.php';
 
 // Retrieve the total number of orders
-$totalOrdersQuery = "SELECT COUNT(*) AS total_orders FROM `sales`";
+$totalOrdersQuery = "SELECT COUNT(*) AS total_orders FROM `orders` WHERE status = 'Complete'";
 $totalOrdersResult = mysqli_query($con, $totalOrdersQuery);
 $totalOrders = mysqli_fetch_assoc($totalOrdersResult)['total_orders'];
 

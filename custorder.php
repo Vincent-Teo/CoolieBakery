@@ -8,7 +8,8 @@ $user_id = $_SESSION['user_id'];
 $query = "SELECT o.order_id, o.order_date, o.quantity, o.status ,p.id, p.name, u.user_id, CONCAT(u.first_name, ' ', u.last_name) AS user_name, u.phone, u.address
           FROM orders o
           INNER JOIN products p ON o.id = p.id
-          INNER JOIN users u ON o.user_id= u.user_id";
+          INNER JOIN users u ON o.user_id= u.user_id
+          WHERE o.user_id = $user_id";
 $result = mysqli_query($con, $query);
 ?>
 

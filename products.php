@@ -65,6 +65,8 @@ session_start();
                     $productId = $row['id'];
                     $productName = $row['name'];
                     $productPrice = $row['price'];
+                    $description = $row['description'];
+                    $portion = $row['portion'];
                     $productImage = $row['image'];
             ?>
                     <div class="col-md-3 col-6 py-3">
@@ -78,6 +80,9 @@ session_start();
                                 <h6><u><?php echo $productName; ?></u></h6>
                                 <h6>Price:</h6>
                                 <h6>RM <?php echo $productPrice; ?></h6>
+                                <h6>Portion: <?php echo $portion; ?></h6>
+                                <h6>Description:</h6>
+                                <h6><?php echo $description; ?></h6>
                                 <form method="POST" action="cart-add.php">
                                     <input type="hidden" name="product_id" value="<?php echo $productId; ?>">
                                     <div class="form-group">

@@ -21,9 +21,9 @@ if (isset($_POST['submit'])) {
     $postalCode = $_POST['postalCode'];
     $country = $_POST['country'];
 
-    if (!is_numeric($phoneNumber)) {//validate for phone number
+    if (!is_numeric($phoneNumber)) {
         $error = "Phone number should be an integer.";
-    } else {//update address and phone number in users table 
+    } else {
         $fullAddress = $address . ', ' . $city . ', ' . $state . ', ' . $postalCode . ', ' . $country;
 
         $updateQuery = "UPDATE users SET phone = '$phoneNumber', address = '$fullAddress' WHERE user_id = '$userId'";
